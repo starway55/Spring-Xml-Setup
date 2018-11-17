@@ -1,4 +1,6 @@
-package yunprac.com.example.springPrac;
+package yunprac.com.example.springPrac.MainApplication;
+
+import org.springframework.context.annotation.Bean;
 
 /**
  * Created by yunzhao on 27/10/18.
