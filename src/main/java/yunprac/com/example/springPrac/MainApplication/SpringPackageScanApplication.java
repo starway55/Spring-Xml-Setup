@@ -5,15 +5,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import yunprac.com.example.springPrac.Services.NoteService;
 import yunprac.com.example.springPrac.Services.NoteServiceAnnotation;
 import yunprac.com.example.springPrac.Services.NoteServiceImpl;
+import yunprac.com.example.springPrac.Services.PropertiesServiceImpl;
 
 /**
  * Created by yunzhao on 17/11/18.
  */
 @SpringBootApplication
 @ComponentScan("yunprac.com.example.springPrac.Services")
+@PropertySource("classpath:service.properties")
 public class SpringPackageScanApplication {
 
     public static void main(String[] args) {
@@ -26,10 +29,16 @@ public class SpringPackageScanApplication {
 
 
 
+
+
         ApplicationContext applicationContext = SpringApplication.run(SpringPackageScanApplication.class, args);
 
         NoteService noteService = applicationContext.getBean(NoteServiceImpl.class);
 
         noteService.getNote();
+
+        PropertiesServiceImpl propertiesServiceImpl = applicationContext.getBean(PropertiesServiceImpl.class);
+
+        System.out.println(propertiesServiceImpl.getServiceURL());
     }
 }
